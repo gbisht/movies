@@ -1,6 +1,6 @@
 var MovieForm = React.createClass({
   getInitialState: function() {
-    return {filter: "All", genre: {checked: false}, year: '', rating: ''};
+    return {filter: "All", genre: {checked: false}};
   },
   handleClick: function(e) {
     if (filters.includes("0")){
@@ -18,17 +18,11 @@ var MovieForm = React.createClass({
     filters = ["0"];
     this.setState({filter: "All"});
   },
-  handleYearChange: function(event) {
-    this.setState({year: event.target.value});
-  },
-  handleRatingChange: function(event){
-    this.setState({rating: event.target.value});
-  },
   handleSubmit: function(e) {
     e.preventDefault();
     var genre = filters.join(",");
-    var year = this.state.year.trim();
-    var rating = this.state.rating.trim();
+    var year = $("#range_year span").text().trim();
+    var rating = $("#range_rating span").text().trim();
     if (!genre && !year && !rating){
       return;
     }
@@ -207,10 +201,7 @@ var MovieForm = React.createClass({
               <h3 className="text">Year</h3>
             </Col>
             <Col sm={6} md={2}>
-              <input
-                type="text"
-                value={this.state.year}
-                onChange={this.handleYearChange}/>
+               <YearSlider/>
             </Col>
           </Row>
           <Row>
@@ -218,10 +209,7 @@ var MovieForm = React.createClass({
               <h3 className="text">Rating</h3>
             </Col>
             <Col sm={6} md={2}>
-              <input
-                type="text"
-                value={this.state.rating}
-                onChange={this.handleRatingChange}/>
+              <RatingSlider/>
             </Col>
           </Row>
           <Row>
@@ -231,6 +219,52 @@ var MovieForm = React.createClass({
           </Row>
         </Grid>
       </form>
+    );
+  }
+});
+
+var YearSlider = React.createClass({
+  getInitialState: function(){
+    return {year: "1930"};
+  },
+  handleOnChange: function(event){
+    this.setState({year: event.target.value});
+  },
+  render: function(){
+    return (
+      <div id="range_year">
+        <input
+          type="range"
+          min={1930}
+          max={2016}
+          step={1}
+          value={this.state.year}
+          onChange={this.handleOnChange}/>
+          <span>{this.state.year}</span>
+      </div>
+    );
+  }
+});
+
+var RatingSlider = React.createClass({
+  getInitialState: function(){
+    return {rating: 1};
+  },
+  handleOnChange: function(event){
+    this.setState({rating: event.target.value});
+  },
+  render: function(){
+    return (
+      <div id="range_rating">
+      <input
+        type="range"
+        min={1}
+        max={10}
+        step={1}
+        value={this.state.rating}
+        onChange={this.handleOnChange}/>
+        <span>{this.state.rating}</span>
+      </div>
     );
   }
 });
