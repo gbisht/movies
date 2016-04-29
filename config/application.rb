@@ -23,6 +23,7 @@ module MoviesApp
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
+
     # TMDB url and api key
     config.TMDB_api_url = 'https://api.themoviedb.org/3'
     config.TMDB_api_key = 'f80f438d8335f73e64d02bc6bc0998a9'

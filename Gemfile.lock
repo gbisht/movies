@@ -37,18 +37,8 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.3)
-    autoprefixer-rails (5.2.0)
-      execjs
-      json
-    babel-source (5.8.35)
-    babel-transpiler (0.7.0)
-      babel-source (>= 4.0, < 6)
-      execjs (~> 2.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (3.3.4.1)
-      autoprefixer-rails (>= 5.0.0.1)
-      sass (>= 3.2.19)
     builder (3.2.2)
     byebug (8.2.2)
     coderay (1.1.0)
@@ -60,7 +50,6 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.0)
-    connection_pool (2.2.0)
     debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (2.6.0)
@@ -137,15 +126,6 @@ GEM
     rake (10.5.0)
     rdoc (4.2.2)
       json (~> 1.4)
-    react-bootstrap-rails (0.28.3)
-      rails (>= 3.1)
-    react-rails (1.6.0)
-      babel-transpiler (>= 0.7.0)
-      coffee-script-source (~> 1.8)
-      connection_pool
-      execjs
-      rails (>= 3.2)
-      tilt
     ruby_parser (3.7.0)
       sexp_processor (~> 4.1)
     sass (3.4.21)
@@ -189,7 +169,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass
   byebug
   coffee-rails (~> 4.1.0)
   haml-rails (~> 0.9)
@@ -198,8 +177,6 @@ DEPENDENCIES
   jquery-rails
   pry
   rails (= 4.2.0)
-  react-bootstrap-rails
-  react-rails (~> 1.6.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring

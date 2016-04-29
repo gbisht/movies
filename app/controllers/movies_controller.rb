@@ -41,7 +41,8 @@ class MoviesController < ApplicationController
       query += "&with_genres=#{@genre}"
     end
     unless @year.blank?
-      query += "&year=#{@year}"
+      query += "&release_date.gte=#{@year}-01-01"
+      query += "&release_date.lte=#{@year.to_i + 5}-01-01"
     end
     unless @rating.blank?
       query += "&vote_average.gte=#{@rating}"
