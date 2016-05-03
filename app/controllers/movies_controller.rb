@@ -4,7 +4,8 @@ class MoviesController < ApplicationController
 
   def search
     @genre = params[:genre]
-    @year = params[:year]
+    @min_year = params[:minYear]
+    @max_year = params[:maxYear]
     @rating = params[:rating]
 
     query = refine_search
@@ -40,13 +41,9 @@ class MoviesController < ApplicationController
     unless @genre == '0'
       query += "&with_genres=#{@genre}"
     end
-    unless @year.blank?
-      query += "&release_date.gte=#{@year}-01-01"
-      query += "&release_date.lte=#{@year.to_i + 5}-01-01"
-    end
-    unless @rating.blank?
-      query += "&vote_average.gte=#{@rating}"
-    end
+    query += "&release_date.gte=#{@min_year}-01-01"
+    query += "&release_date.lte=#{@max_year}-12-31"
+    query += "&vote_average.gte=#{@rating}"
     query
   end
 end

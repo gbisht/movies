@@ -1,5 +1,8 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var Grid = require('react-bootstrap').Grid;
+var Row = require('react-bootstrap').Row;
+var Col = require('react-bootstrap').Col;
 var MovieForm = require('./form');
 var Movie = require('./movie');
 
@@ -23,8 +26,18 @@ var Movies = React.createClass({
   render: function() {
     return (
       <div className="movies">
-        <MovieForm onSearchSubmit={this.handleSearchSubmit} />
-        <Movie data={this.state.data}/>
+        <Grid>
+          <Row>
+            <Col md={12}>
+              <MovieForm onSearchSubmit={this.handleSearchSubmit} />
+            </Col>
+          </Row>
+          <Row>
+            <Col md={5}>
+              <Movie data={this.state.data}/>
+            </Col>
+          </Row>
+        </Grid>
       </div>
     );
   }
